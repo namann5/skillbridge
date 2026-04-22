@@ -119,6 +119,42 @@ export default function SkillDetailPage() {
 
                 <Grid container spacing={4}>
                     <Grid size={{ xs: 12, md: 8 }}>
+                        {/* What you'll learn */}
+                        <Box sx={{ mb: 4 }}>
+                            <Typography sx={{ fontWeight: 700, fontSize: 20, mb: 2 }}>What you'll learn</Typography>
+                            <Grid container spacing={2}>
+                                {(skill.what_you_learn || [
+                                    "Core principles and foundations",
+                                    "Practical hands-on techniques",
+                                    "Advanced industry secrets",
+                                    "Final project implementation"
+                                ]).map((item: string, idx: number) => (
+                                    <Grid size={{ xs: 12, sm: 6 }} key={idx}>
+                                        <Stack direction="row" alignItems="center" spacing={1}>
+                                            <CheckCircle sx={{ color: C.emerald, fontSize: 16 }} />
+                                            <Typography sx={{ fontSize: 14 }}>{item}</Typography>
+                                        </Stack>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
+
+                        {/* Requirements */}
+                        <Box sx={{ mb: 4 }}>
+                            <Typography sx={{ fontWeight: 700, fontSize: 20, mb: 2 }}>Requirements</Typography>
+                            <Stack spacing={1}>
+                                {(skill.requirements || [
+                                    "Basic curiosity and willingness to learn",
+                                    "Access to necessary tools (provided in session)",
+                                    "Stable internet (if online session)"
+                                ]).map((req: string, idx: number) => (
+                                    <Stack key={idx} direction="row" alignItems="center" spacing={1.5}>
+                                        <FiberManualRecord sx={{ fontSize: 6, color: C.coral }} />
+                                        <Typography sx={{ fontSize: 14, color: C.muted }}>{req}</Typography>
+                                    </Stack>
+                                ))}
+                            </Stack>
+                        </Box>
 
                         {/* Availability */}
                         <Card sx={{ background: "rgba(240,237,232,0.03)", border: `1px solid ${C.border}`, borderRadius: "20px", p: 3, mb: 4 }}>
